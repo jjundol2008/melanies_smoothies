@@ -1,6 +1,6 @@
 # Import python packages
 import streamlit as st
-from snowflake.snowpark.context import get_active_session
+# from snowflake.snowpark.context import get_active_session # for Snowflake Streamlit
 from snowflake.snowpark.functions import col
 
 
@@ -24,7 +24,10 @@ st.write('The cname on your Smoothie will be:', name_on_order)
 
 # session활성화 및 데이터 가져오기
 
-session = get_active_session()
+# session = get_active_session() # for Snowflake Streamlit
+cnx = st.connection("snowflake")  # for  Streamlit
+session = cnx.session()  # for  Streamlit
+
 # my_dataframe = session.table("smoothies.public.fruit_options") #lesson01
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME')) #lesson02
 # st.dataframe(data=my_dataframe, use_container_width=True) #lesson02
