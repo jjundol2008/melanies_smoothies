@@ -39,7 +39,7 @@ ingredients_list = st.multiselect(
 ) #lesson02
 
 import requests
-smoothiefroot_response = request.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
 sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
 if ingredients_list:
