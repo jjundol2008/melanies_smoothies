@@ -31,8 +31,9 @@ session = cnx.session()  # for  Streamlit
 
 # my_dataframe = session.table("smoothies.public.fruit_options") #lesson01
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'), col('SEARCH_ON')) #lesson02
+st.dataframe(data=my_dataframe, use_container_width=True) #lesson02
 st.stop()
-# st.dataframe(data=my_dataframe, use_container_width=True) #lesson02
+
 
 ingredients_list = st.multiselect(
     'Choose up to 5 ingredients:'
