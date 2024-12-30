@@ -38,6 +38,11 @@ ingredients_list = st.multiselect(
     , max_selections=5
 ) #lesson02
 
+# New section to display smoothiefroot nutrition information
+import requests
+smoothiefroot_response = request.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+
 if ingredients_list:
     # st.write(ingredients_list)
     # st.text(ingredients_list)
@@ -64,7 +69,4 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smootie is ordered,' + name_on_order + '!' , icon="✅")
 
-# New section to display smoothiefroot nutrition information
-import requests
-smoothiefroot_response = request.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+
